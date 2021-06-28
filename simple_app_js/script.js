@@ -20,8 +20,7 @@ dropList__li.forEach( item => {
 });
 
 function selectChoose (e) {
-    let text = this.innerText;
-    currentText.innerText = text;
+    currentText.innerText = e.target.innerText;
     target = e.target;
     inp.value = target.innerText;
     dropList.classList.remove('_active');
