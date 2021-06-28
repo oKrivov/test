@@ -1,0 +1,175 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; }
+
+body {
+    background-color: rgba(0, 0, 0, 1);
+    margin: 0;
+    padding: 0;
+    font-family: "Arial";
+}
+
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 700px;
+    height: 250px;
+    background-color: #fff;
+    padding: 20px 30px;
+}
+
+.main__block {
+}
+
+.block {
+    margin-bottom: 20px;
+}
+
+.block__title {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.block__list {
+    border: 1px solid rgb(148, 148, 148);
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.76);
+    width: 250px;
+    display: flex;
+    padding: 10px 5px;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+}
+
+.block__list:focus {
+    box-shadow: 0 0 5px rgb(31, 177, 245);
+}
+
+.block__list:hover {
+    border: 1px solid rgba(105, 104, 104, 0.527);
+}
+
+span {
+    margin: 0 auto;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #000;
+    position: absolute;
+    top: calc(50% - 2.5px);
+    right: 10px;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 0;
+    list-style: none;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.block__drop-down-list._active {
+    visibility: visible;
+}
+
+.drop-list {
+    visibility: hidden;
+    border: 1px solid rgb(148, 148, 148);
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.76);
+    width: 250px;
+    border-radius: 5px;
+    position: absolute;
+    cursor: pointer;
+    background-color: #fff;
+}
+.drop-list__li:hover {
+    background-color: rgba(209, 208, 208, 0.199);
+}
+
+.button {
+    flex: 1 1 10%;
+    text-decoration: none;
+    border: 1px solid rgb(148, 148, 148);
+    border-left: 0.5px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.76);
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:hover {
+    border: 1px solid rgba(105, 104, 104, 0.527);
+    border-left: none;
+}
+
+.button:focus {
+    box-shadow: 0 0 5px rgb(31, 177, 245); /* Параметры тени */
+    border-left: 0.5px;
+}
+
+input {
+}
+
+input:hover {
+    border: 1px solid rgba(105, 104, 104, 0.527);
+    /*border: 1px solid rgba(255, 20, 20, 0.97);*/
+}
+
+input:focus {
+    border: 1px solid rgb(15, 95, 201);
+}
+
+.block__input {
+    border-radius: 5px;
+    max-width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input {
+    font-size: 16px;
+    padding: 10px 5px;
+    flex: 1 1 90%;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.76);
+    margin: 0;
+    outline: 0 !important;
+    border: 1px solid rgb(148, 148, 148);
+    border-radius: 5px 0 0 5px ;
+}
+
+option {
+    padding: 30px;
+}
+
+.error {
+    border: 1px solid rgb(255, 41, 41);
+}
