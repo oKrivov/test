@@ -11,48 +11,51 @@
 </head>
 <body>
     <div class="wrapper">
+
+
         <div class="todo_list">
             <h1>todos</h1>
             <div class="todo_block">
+
                 <div class="input-group mb-3">
-                    <div class="input-group-text">
-<!--                        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">-->
+                    <div class="sort-container">
+                        <a href="" class="sort"></a>
                     </div>
-                    <input type="text" class="form-control" placeholder="What needs to be done?" aria-label="Text input with checkbox">
+                    <input type="text" class="form-control input_task" placeholder="What needs to be done?" aria-label="Text input with checkbox">
                 </div>
 
-<!--                <div class="form-check">-->
-<!--                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">-->
-<!--                    <label class="form-check-label" for="flexCheckDefault">-->
-<!--                        Default checkbox-->
-<!--                    </label>-->
-<!--                    <button type="button" class="btn-close" aria-label="Close"></button>-->
-<!--                </div>-->
 
-<!--                <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">-->
-<!--                <label class="btn btn-outline-primary" for="btn-check-outlined">Single toggle</label><br>-->
-                <div class="new_task">
-                    <label class="label">
-                        <input type="checkbox" class="checkbox">
-                        <span class="fake-checkbox"></span>
-                        <span class="label_text">fdflkmcokondo[i</span>
-                    </label>
+                <div class="container_new_task">
+<!--                    <div class="new_task">-->
+<!--                        <label class="label">-->
+<!--                            <input type="checkbox" class="checkbox" >-->
+<!--                            <span class="fake-checkbox"></span>-->
+<!--                        </label>-->
+<!--                        <div class="task_container">-->
+<!--                            <span class="label_text">New task</span>-->
+<!--                            <a type="button" class="my-btn-close" aria-label="Close"></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
 
-                <div class="block_info">
-                            <div class="info info-score">
-                                <spam class="info-score_item">1</spam>
-                                item left
-                            </div>
-                            <div class="info info-buttons">
-                                    <a href="" class="btn_info active-btn">All</a>
-                                    <a href="" class="btn_info">Active</a>
-                                    <a href="" class="btn_info">Completed</a>
-                            </div>
-                            <div class="info info-clear">
-                                <a href="" class="btn_clear"> Clear completed</a>
-                            </div>
+
+
+                <div class="container_info">
+                    <div class="block_info">
+                    <div class="info info-score">
+                        <spam class="info-score_item">1</spam>
+                        item left
                     </div>
+                    <div class="info info-buttons">
+                        <a href="" class="btn_info active-btn all_tasks">All</a>
+                        <a href="" class="btn_info active_task">Active</a>
+                        <a href="" class="btn_info completed_task">Completed</a>
+                    </div>
+                    <div class="info info-clear">
+                        <a href="" class="btn_clear clear_completed"> Clear completed</a>
+                    </div>
+                </div>
+                </div>
 
             </div>
         </div>
