@@ -117,7 +117,7 @@ h1 {
 
 }
 .block_info:after {
-   content: '';
+    content: '';
     width: calc(100% - 10px);
     margin-left: 5px;
     height: 5px;
@@ -266,8 +266,10 @@ input.input_task:-ms-input-placeholder {color: #E9E7E9;}
 .my-btn-close:hover:before {
     background-color: #9F7078;
 }
-
-
-/*=============================*/
-
-/*==============================*/
+.check {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+.completed_task {
+    display: block;
+}
