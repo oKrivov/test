@@ -85,6 +85,12 @@ h1 {
     border: 3px solid #E9E7E9;
     transform: skew(2deg, 2deg) rotate(45deg);
 }
+.toggleCheck {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    /* opacity: 0; */
+}
 
 
 .input_task {
@@ -102,6 +108,7 @@ h1 {
 }
 
 .container_info {
+    display: none;
     height: 100%;
     width: 100%;
     position: relative;
@@ -282,3 +289,4 @@ input.input_task:-ms-input-placeholder {color: #E9E7E9;}
     text-decoration: line-through;
     opacity: 0.5;
 }
+

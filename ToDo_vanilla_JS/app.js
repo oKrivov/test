@@ -6,7 +6,9 @@ let todoInput = document.querySelector('.input_task');
 let todoList = document.querySelector('.container_new_task');
 const clear_completed = document.querySelector('.clear_completed');
 const filterOption = document.querySelector('.info-buttons');
-
+let itemleft = document.querySelector('.info-score_item');
+let container_info = document.querySelector('.container_info');
+const sortButton = document.querySelector('.toggleCheck');
 
 
 //Event Listeners
@@ -14,31 +16,80 @@ todoInput.addEventListener('keydown', function (e) {
     if (e.keyCode === 13) {
         // console.log(e);
         if (!todoInput.value) return;
+
+        container_info.style.display = 'block';
         addTdo(e);
+
     }
 });
+
 // todoList.addEventListener('click', toggleCheck);
+
+
+sortButton.addEventListener('click', checkAll);
+
+
 filterOption.addEventListener('click', filterTodo);
 clear_completed.addEventListener('click', clearCompleted);
 
 
 //FUNCTIONS
-function clearCompleted() {
-    console.log(todoList.children)
-    console.log(todoList.children)
-    for (let item of todoList.children){
-        if (item.classList.contains('completed')){
-            console.log(item);
-            item.remove();
-        }
+
+function checkUncheck(main, cn) {
+
+    let cbarray = document.getElementsByClassName(cn);
+
+    console.log(cbarray);
+    for (let i = 0; i < cbarray.length; i++) {
+        let item = cbarray[i]
+        item.checked = main.checked
+        console.log(item);
     }
-    // todoList.childNodes.forEach(function (item) {
-    //     if (item.classList.contains('completed')){
-    //         console.log(item);
-    //         item.remove();
-    //     }
-    // })
+};
+
+let checkboxes = document.querySelectorAll("input [type = 'checkbox']");
+
+
+function checkAll(myCheckbox) {
+    console.log(checkboxes);
+    // if(myCheckbox.checked == true) {
+    // 	checkboxes.forEach(function(checkbox) {
+    // 		checkbox.checked = true;
+    // 	})
+    // }
 }
+
+
+
+
+
+
+
+
+
+
+// Check mark
+function toggleCheck(e) {
+    const item = e.target;
+
+    if (item.classList.contains('checkbox')) {
+        const todo = item.parentElement.parentElement;
+        todo.classList.toggle('completed');
+    }
+    countActiveTodo ()
+}
+
+// Clear Competed
+function clearCompleted() {
+    let item = todoList.children;
+    for (let i = item.length - 1; i >= 	0; --i) {
+        if (item[i].classList.contains('completed')) {
+            item[i].remove();
+        }
+
+    }
+}
+
 
 function addTdo(e) {
     // TODO DIV
@@ -51,20 +102,16 @@ function addTdo(e) {
     const labelCheckbox = document.createElement("input");
     labelCheckbox.classList.add('checkbox')
     labelCheckbox.type = 'checkbox';
+    labelCheckbox.name = 'checkbox';
     label.appendChild(labelCheckbox)
     const fake_checkbox = document.createElement("span");
     fake_checkbox.classList.add('fake-checkbox')
     label.appendChild(fake_checkbox)
 
     // label.innerHTML = `<input type="checkbox" class="checkbox" >
-	//                  <span class="fake-checkbox"></span>`;
+    //                  <span class="fake-checkbox"></span>`;
     labelCheckbox.addEventListener('change', toggleCheck)
     todoDiv.appendChild(label);
-
-    // Create task
-    // const task_text_container = document.createElement('div');
-    // task_text_container.classList.add('task_container');
-    // todoDiv.appendChild(task_text_container);
 
     // Create taskText
     const taskText = document.createElement('span');
@@ -84,29 +131,36 @@ function addTdo(e) {
     // Clear todoInput
     todoInput.value = '';
 
+    // itemleft.innerText = todoList.children.length
+    countActiveTodo ()
 }
 
-function toggleCheck(e) {
-    const item = e.target;
-    // Check mark
-    if (item.classList.contains('checkbox')) {
-        const todo = item.parentElement.parentElement;
-        // console.log(todo)
-        todo.classList.toggle('completed');
+
+
+// Count item
+function countActiveTodo() {
+    let item = todoList.children;
+    let count = item.length;
+    for (let i = item.length - 1; i >= 	0; --i) {
+        if (item[i].classList.contains('completed')) {
+            count --;
+        }
     }
-
+    itemleft.innerText = count
 }
 
+// Delete todo
 function deleteTodo(e) {
     const item = e.target;
-    // Delete todo
+
     if (item.classList.contains('my-btn-close')) {
         const todo = item.parentElement;
         todo.remove();
-
     }
+    countActiveTodo ()
 }
 
+// Filter
 function filterTodo(e) {
 
     const todos = todoList.children;
@@ -126,5 +180,3 @@ function filterTodo(e) {
         }
     }
 }
-
-
