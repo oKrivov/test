@@ -2,38 +2,30 @@ html {
     box-sizing: border-box;
     font-size: 100%;
 }
-
 *, *:before, *:after {
     /*box-sizing: inherit;*/
 }
-
 body {
     background-color: #F6F4F6;
     font-size: 22px;
     color: #515051;
-
 }
-
 .wrapper {
     display: flex;
     justify-content: center;
 }
-
 a {
     outline: none;
     text-decoration: none;
     color: #B0AEB0;
-
 }
 a:hover {
     text-decoration: none;
     color: #B0AEB0;
 }
-
 .todo_list{
     min-height: 70px;
     flex: 0 0 550px;
-
 }
 h1 {
     font-size: 72px;
@@ -42,23 +34,16 @@ h1 {
     margin: 27px 0;
     text-align: center;
 }
-
 .todo_block {
     box-shadow:  0 15px 25px 15px rgb(227, 227, 227);
     background-color: #fff;
-    /*position: relative;*/
-    /*z-index: -1;*/
 }
-
 .input-group {
     box-shadow: 1px 1px 3px rgb(200,200,200);
-    /*flex-direction: column;*/
 }
-
 .mb-3 {
     margin: 0 !important;
 }
-
 
 
 .sort-container {
@@ -81,32 +66,28 @@ h1 {
     left: -3px;
     width: 20px;
     height: 20px;
-    /*background-color: #E9E7E9;*/
     border: 3px solid #E9E7E9;
     transform: skew(2deg, 2deg) rotate(45deg);
+}
+.sort_check:before {
+    border-color: #515051;
 }
 .toggleCheck {
     width: 20px;
     height: 20px;
     position: absolute;
-    /* opacity: 0; */
+    opacity: 0;
 }
-
-
 .input_task {
     font-size: 22px;
     font-weight: 300;
     padding: 17px 0 17px 10px;
     border: none;
-    /*outline: none;*/
-    /*box-shadow: none;*/
 }
 .input_task:focus {
-    /*outline: none;*/
     border: none;
     box-shadow: none;
 }
-
 .container_info {
     display: none;
     height: 100%;
@@ -121,7 +102,6 @@ h1 {
     color: #B0AEB0;
     align-items: center;
     box-shadow: 1px 1px 3px rgb(200,200,200);
-
 }
 .block_info:after {
     content: '';
@@ -147,7 +127,6 @@ h1 {
     bottom: -12px;
     box-shadow: 1px 1px 3px rgb(200,200,200);
 }
-
 .info {
     flex: 1 0 33.333%;
     padding: 8px;
@@ -158,12 +137,13 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    pointer-events: none;
 }
 .btn_info {
-    /*border: 1px solid #E3D4D7;*/
-    /*border-radius: 3px;*/
+    border-radius: 3px;
     padding: 5px;
     border: 1px solid transparent;
+    pointer-events: all;
 }
 .btn_info:hover {
     border: 1px solid #EBEAEB;
@@ -172,9 +152,11 @@ h1 {
     border: 1px solid #E3D4D7;
     border-radius: 3px;
 }
-
 .info-clear {
     text-align: right
+}
+.clear_completed{
+    display: none;
 }
 .btn_clear {}
 .btn_clear:hover {
@@ -189,14 +171,14 @@ input.input_task::-moz-placeholder {color: #E9E7E9;}
 input.input_task:-moz-placeholder {color: #E9E7E9;}
 input.input_task:-ms-input-placeholder {color: #E9E7E9;}
 
-/*=======================================================*/
-
 .new_task{
-    /*border-bottom: 1px solid #E3D4D7;*/
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 1px 1px 1px rgb(200,200,200);
+}
+.new_task:hover .my-btn-close{
+    visibility: visible;
 }
 .label{
     margin: 10px 10px;
@@ -205,7 +187,6 @@ input.input_task:-ms-input-placeholder {color: #E9E7E9;}
 .checkbox{
     display: none;
     align-items: center;
-    /*pointer-events: none;*/
 }
 .fake-checkbox{
     display: inline-block;
@@ -224,7 +205,6 @@ input.input_task:-ms-input-placeholder {color: #E9E7E9;}
     height: 22px;
     border-right: 1.5px solid #7FB2A9;
     border-bottom: 2.5px solid #7FB2A9;
-    /*border: 2px solid #7FB2A9;*/
     left: 50%;
     top: 42%;
     transform: translate(-50%, -50%) skew(5deg, 25deg) rotate(30deg);
@@ -234,7 +214,6 @@ input.input_task:-ms-input-placeholder {color: #E9E7E9;}
 .checkbox:checked + .fake-checkbox::before {
     opacity: 1;
 }
-
 .label_text {
     margin-left: 20px;
     font-size: 22px;
@@ -253,6 +232,7 @@ input.input_task:-ms-input-placeholder {color: #E9E7E9;}
     position: relative;
     cursor: pointer;
     /*overflow: hidden;*/
+    visibility: hidden;
 }
 .my-btn-close:before {
     position: absolute;
@@ -278,10 +258,6 @@ input.input_task:-ms-input-placeholder {color: #E9E7E9;}
 .my-btn-close:hover:before {
     background-color: #9F7078;
 }
-/*.completed {*/
-/*    text-decoration: line-through;*/
-/*    opacity: 0.5;*/
-/*}*/
 .completed_task {
     display: block;
 }

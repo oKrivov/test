@@ -1,4 +1,6 @@
+/*
 'use strict'
+
 
 let addTodos = document.querySelector('.input_task');
 let todoList = [];
@@ -134,18 +136,6 @@ allTask.addEventListener('click', function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 todo.addEventListener('click',function (e) {
 
     let attribute = e.target.getAttribute('class')
@@ -155,3 +145,4 @@ todo.addEventListener('click',function (e) {
     }
 })
 
+ */
