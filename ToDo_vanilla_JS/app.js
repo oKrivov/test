@@ -83,6 +83,7 @@ function addTdo(e) {
     // itemleft.innerText = todoList.children.length
     countActiveTodo();
     filterTodos();
+    checkMark();
 
 }
 
@@ -120,7 +121,7 @@ function checkMark() {
     toggleCheckbox.checked = allChecked;
     clear_completed.style.display = anyChecked ? 'block' : 'none';
     const checkUncheck_mark = document.querySelector('.sort');
-    console.log(checkUncheck_mark)
+
     checkUncheck_mark.classList.toggle('sort_check', allChecked);
 }
 
