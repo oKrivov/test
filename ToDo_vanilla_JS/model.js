@@ -59,7 +59,7 @@ class ToDoList {
         this.countActiveTodo();
         this.filterTodos();
         this.checkMark();
-        this.itemsNull();
+        // this.itemsNull();
     }
 
 
@@ -75,25 +75,6 @@ class ToDoList {
     };
 
 
-
-    // Hide filter
-    //  itemsNull() {
-        // console.log(toDo.lastElementChild.style.display = 'block')
-        // console.log(todoListElement.children.length)
-
-    // }
-
-    itemsNull() {
-        console.log(this.element.children)
-        if (this.element.children.length > 0) {
-            container_info.style.display = 'block';
-            imgToggleCheckbox.style.display = 'block';
-        } else {
-            container_info.style.display = 'none';
-            imgToggleCheckbox.style.display = 'none';
-        }
-    }
-
     toggleCheck(e) {
         this.checkMark();
         this.toggleTodo(e.target, e.target.checked);
@@ -103,17 +84,14 @@ class ToDoList {
     // Check mark
     checkMark() {
         const arrayOfCheckbox = this.element.getElementsByClassName('checkbox');
-        let allChecked = Array.from(arrayOfCheckbox).every(check => check.checked); //true or false
+        let allChecked = Array.from(arrayOfCheckbox).every(check => check.checked);
         // console.log(allChecked)
-        const anyChecked = Array.from(arrayOfCheckbox).some(check => check.checked); //true or false
-
-        console.log()
+        const anyChecked = Array.from(arrayOfCheckbox).some(check => check.checked);
         toggleCheckbox.checked = allChecked;
         clear_completed.style.display = anyChecked ? 'block' : 'none';
         const checkUncheck_mark = document.querySelector('.sort');
         checkUncheck_mark.classList.toggle('sort_check', allChecked);
     }
-
 
     toggleTodo(checkbox, toggle = true) {
         const todo = checkbox.parentElement.parentElement;
@@ -130,7 +108,7 @@ class ToDoList {
             .forEach(item => item.remove())
 
         this.checkMark();
-        this.itemsNull();
+
     }
 
     // Count item
@@ -149,7 +127,8 @@ class ToDoList {
         }
         this.checkMark();
         this.countActiveTodo();
-        this.itemsNull();
+        // this.itemsNull();
+        itemsNull()
     }
 
     // Filter
@@ -165,7 +144,6 @@ class ToDoList {
                 buttons[i].classList.remove('active-btn');
             }
         }
-
         this.filterTodos();
     }
 
