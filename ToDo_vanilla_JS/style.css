@@ -58,6 +58,7 @@ h1 {
     height: 13px;
     position: relative;
     overflow: hidden;
+    display: none;
 }
 .sort:before {
     content: '';

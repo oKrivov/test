@@ -1,46 +1,78 @@
 'use strict'
 
+
 //Selectors
+
+
+const toDo = document.querySelector('.todo_block')
+
 let todoInput = document.querySelector('.input_task');
-let todoList = document.querySelector('.container_new_task');
 const clear_completed = document.querySelector('.clear_completed');
 const filterOption = document.querySelector('.info-buttons');
-let itemleft = document.querySelector('.info-score_item');
-let container_info = document.querySelector('.container_info');
+const itemleft = document.querySelector('.info-score_item');
+const container_info = document.querySelector('.container_info');
 const toggleCheckbox = document.querySelector('.toggleCheck');
-let currentFilter = 'all';
+const imgToggleCheckbox = document.querySelector('.sort')
+const todoListElement = document.querySelector('.container_new_task')
+
+const todoList = new ToDoList(todoListElement);
+
 
 //Event Listeners
 todoInput.addEventListener('keydown', function (e) {
     if (e.keyCode === 13) {
-        // console.log(e);
+
         if (!todoInput.value.trim()) return;
-        const todoList_Array = Array.from(todoList.children).map(child => child.textContent);
-        if (todoList_Array.includes(todoInput.value)) {
-            return;
-        }
-
-        // for (let item of todoList_Array) {
-        //     if (item.textContent.includes(todoInput.value)){
-        //        return;
-        //     }
-        // }
-
-        container_info.style.display = 'block';
-        addTdo(e);
-
+// TODO clear input
+        todoList.addTdo(todoInput.value);
+        todoInput.value = '';
     }
+    // itemsNull();
 });
-filterOption.addEventListener('click', filterTodo);
-clear_completed.addEventListener('click', clearCompleted);
-toggleCheckbox.addEventListener('change', checkUncheck)
+filterOption.addEventListener('click',  function (e) {
+    todoList.filterTodo(e);
+} );
+clear_completed.addEventListener('click',function (e) {
+    todoList.clearCompleted(e);
+} );
+toggleCheckbox.addEventListener('change',function (e) {
+    todoList.checkUncheck(e);
+} );
+
+
+toDo.addEventListener('change', todoList.itemsNull);
+
+// function itemsNull() {
+//
+//     if(todoListElement.children.length > 0) {
+//         toDo.lastElementChild.style.display = 'block'
+//     } else {
+//         toDo.lastElementChild.style.display = 'none'
+//     }
+// }
+// itemsNull() {
+//     console.log(this.element.children)
+//     if (this.element.children.length > 0) {
+//         container_info.style.display = 'block';
+//         imgToggleCheckbox.style.display = 'block';
+//     } else {
+//         container_info.style.display = 'none';
+//         imgToggleCheckbox.style.display = 'none';
+//     }
+// }
 
 
 
+// filterOption.addEventListener('click',  () => todoList.filterTodo());
+// clear_completed.addEventListener('click', () => todoList.clearCompleted());
+// toggleCheckbox.addEventListener('change', () => todoList.checkUncheck());
+
+
+/*
 //FUNCTIONS
 
 // Todo Div
-function addTdo(e) {
+function addTdo(text) {
     // TODO DIV
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('new_task');
@@ -89,7 +121,6 @@ function addTdo(e) {
 
 
 
-
 // Check and Uncheck All Todos
 function checkUncheck(event) {
     const arrayOfCheckbox = todoList.getElementsByClassName('checkbox');
@@ -102,6 +133,7 @@ function checkUncheck(event) {
     checkMark()
     countActiveTodo()
 };
+
 
 
 // Hide filter
@@ -125,7 +157,7 @@ function checkMark() {
     checkUncheck_mark.classList.toggle('sort_check', allChecked);
 }
 
-function toggleCheck(e) {
+function toggleCheck(e)     {
     checkMark()
     toggleTodo(e.target, e.target.checked)
     countActiveTodo();
@@ -177,8 +209,8 @@ function deleteTodo(e) {
     itemsNull();
 }
 
-
 // Filter
+// Toggle active class for buttons
 function filterTodo(e) {
 
     // const todos = todoList.children;
@@ -197,7 +229,7 @@ function filterTodo(e) {
     filterTodos()
 }
 
-
+// Filter todos
 function filterTodos() {
     const todos = todoList.children;
     for (const todo of todos) {
@@ -214,3 +246,5 @@ function filterTodos() {
         }
     }
 }
+
+*/
