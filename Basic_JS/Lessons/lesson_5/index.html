@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Бродилка</title>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+		tr {
+			width: 20px;
+			height: 20px;
+		}
+		td {
+			border: 1px solid #888888;
+			width: 20px;
+			height: 20px;
+			background-color: #EEEEEE;
+		}
+	</style>
+</head>
+<body>
+
+	<table id="game"></table>
+	<script src='game.js'></script>
+
+<!-- 
+	<div id="test-id">
+		<h1>Тестовая страница</h1>
+		<div class="test-class">
+			<p>Lorem ipsum dolor sit amet.</p>
+			<p>Lorem ipsum dolor sit amet consectetur.</p>
+		</div>
+		<div class="test-class">
+			<p>Lorem ipsum dolor sit amet.</p>
+			<p>Lorem ipsum dolor sit amet consectetur.</p>
+		</div>
+	</div>
+ -->
+	
+	
+<!-- 
+
+	<script>
+		'use strict';
+
+		const h1Tag = document.querySelector('h1');
+		// console.log(h1Tag.textContent); 
+		// h1Tag.textContent = `${h1Tag.textContent}!!!`; 
+		setTimeout(() => { h1Tag.textContent = `${h1Tag.textContent}!!!`}, 2000)
+
+		// document.body.innerHTML = '<p>Привет из JS</p>' 
+
+		// document.querySelector('h1').setAttribute('data-info', 'Привет!');
+
+		const divTag = document.querySelector('.test-class');
+		console.log(divTag.classList);
+		divTag.classList.add('classFromJS');
+		divTag.classList.remove('test-class');
+		divTag.classList.toggle('test-class');
+		console.log(divTag.classList.contains('test-class'));
+
+		h1Tag.style.color = 'red';
+		h1Tag.style.backgroundColor = 'yellow';
+		
+		const myDiv = document.createElement('div');
+		myDiv.textContent = 'Текст внутри div из js.';
+		document.body.appendChild(myDiv);
+
+		document.body.appendChild(h1Tag);
+
+		const parentElemrnt = document.getElementById('test-id');
+		const referenceElement = document.querySelector('.test-class:last-child');
+
+
+		parentElemrnt.insertBefore(h1Tag, referenceElement);
+
+		console.log(document.querySelector('h1').parentElement.querySelector('div'));
+		document.querySelector('h1').parentElement.querySelector('div') 
+
+		// h1Tag.remove();
+
+		h1Tag.onclick = function() {
+			alert('Привет!')
+		};
+		h1Tag.onclick = null;
+
+		const sayHello = function(addEventListener) {
+			console.log(event);
+			console.log(event.target);
+			console.log(this);
+		}
+
+
+		h1Tag.addEventListener('click', sayHello);
+		h1Tag.addEventListener('click', function() {
+			alert(321)
+		});
+		// h1Tag.removeEventListener('click', sayHello);
+
+		window.onload = function () {
+			alert('Все загружено.')
+		}
+
+
+
+
+
+
+	</script>
+ -->
+
+</body>
+</html>

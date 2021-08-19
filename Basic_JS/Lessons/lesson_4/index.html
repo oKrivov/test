@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+'use strict'
+/*
+const myCar = {
+	manufacture: 'BMW',
+	color: 'black',
+	possibleColors: ['black', 'white', 'red', 'grey'],
+	engin: {
+		enginCode: 'B32',
+		power: 350,
+	},
+	beep() {
+		console.log('Машина подает сигнал!');
+	}
+ };
+
+for(const prop in myCar){
+	console.log(prop);
+	console.log(myCar[prop]);
+}
+
+function getObject() {
+	return {
+		number: 5,
+		sayNumber() {
+			console.log(`Номер в данном объекте: ${this.number}`);
+		}
+	};
+}
+let myObj = getObject();
+console.log(myObj.sayNumber());
+*/
+
+
+
+const settings = {
+	rowsCount: 10,
+	colsCount: 10,
+	startPositionX: 9,
+	startPositionY: 0,
+};
+
+const player = {
+	x: null,
+	y: null,
+	init(startX, startY) {
+		this.x = startX;
+		this.y = startY;
+	},
+	move (nextPoint) {
+		this.x = nextPoint.x;
+		this.y = nextPoint.y;
+	},
+	getNextPosition(direction) {
+		const nextPosition = {
+			x: this.x,
+			y: this.y,
+		};
+
+		switch (direction) {
+			case 1:
+				nextPosition.y++;
+				nextPosition.x--;
+				break;
+			case 2:
+				nextPosition.y++;
+				break;
+			case 3:
+				nextPosition.y++;
+				nextPosition.x++;
+				break;
+			case 4:
+				nextPosition.x--;
+				break;
+			case 6:
+				nextPosition.x++;
+				break;
+			case 7:
+				nextPosition.x--;
+				nextPosition.y--;
+				break;
+			case 8:
+				nextPosition.y--;
+				break;
+			case 9:
+				nextPosition.x++;
+				nextPosition.y--;
+				break;
+		};
+
+		return nextPosition;
+	},
+};
+
+const game = {
+	settings,
+	player,
+	run() {
+		this.player.init(this.settings.startPositionX, this.settings.startPositionY);
+
+		while (true) {
+			this.render();
+			
+			const direction = this.getDirection ();
+			
+			if (direction === -1) {
+				return alert('До свидания!');
+			}
+			const nextPoint = this.player.getNextPosition(direction);
+			// console.log(nextPoint);
+			if (this.canPlayerMakeStep(nextPoint)) {
+				this.player.move(nextPoint);
+			}
+
+			
+		}
+	},
+	render() {
+		let map = '';
+		for (let row = 0; row < this.settings.rowsCount; row++) {
+			for (let col = 0; col < this.settings.colsCount; col++){
+				
+				if (this.player.x === col && this.player.y === row) {
+					map += 'o '
+				} else {
+					map += 'x ';
+				}
+			}
+			map += '\n'
+		}
+		console.clear();
+		console.log(map);
+	},
+	getDirection() {
+		const availableDirections = [-1, 1, 2, 3, 4, 6, 7, 8, 9];
+
+		while (true) {
+			const direction = parseInt(prompt(`Введите число, куда хотите переместиться, -1 для выхода.`));
+			
+			if (!availableDirections.includes(direction)) {
+				alert(`Для перемещения необходимо ввести одно из целых чисел: ${availableDirections.join(', ')}`);
+				continue;
+			}
+
+			return direction;
+		}
+	},
+
+	canPlayerMakeStep(nextPoint) {
+		return nextPoint.x >= 0 && nextPoint.x < this.settings.colsCount &&
+			nextPoint.y >= 0 && nextPoint.y < this.settings.rowsCount;
+	}
+};
+
+game.run();
+
+	</script>
+</body>
+</html>

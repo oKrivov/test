@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 
+		2. Реализовать модуль корзины. У каждого товара есть кнопка «Купить», при нажатии на которую
+		происходит добавление имени и цены товара в блок корзины. Корзина должна уметь считать
+		общую сумму заказа. Один товар можно добавить несколько раз.
+	-->
+
+	<div id="container">
+		<div>
+			<img src="img/01.png" width="100" alt="">
+			Цена: 500 руб.
+			<button class="buy-btn" data-price="500" data-name="Sun">Купить</button>
+		</div>
+		<div>
+			<img src="img/02.png" width="100" alt="">
+			Цена: 250 руб.
+			<button class="buy-btn" data-price="250" data-name="Cloud">Купить</button>
+		</div>
+		<div>
+			<img src="img/03.png" width="100" alt="">
+			Цена: 50 руб.
+			<button class="buy-btn" data-price="50" data-name="Night">Купить</button>
+		</div>
+	</div>
+	<div id="basket">
+		Колличество товаров: <span id="basket-count">0</span>
+		Итого: <span id="basket-price">0</span>
+
+	</div>
+
+	<script src="js.js"></script>
+</body>
+</html>

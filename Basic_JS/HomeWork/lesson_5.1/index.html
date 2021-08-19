@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Шахматы</title>
+	<style>
+		table {
+			margin: auto;
+			border-collapse: collapse;
+		}
+		tr {
+			width: 50px;
+			height: 50px;
+		}
+		td {
+			border: 1px solid #888888;
+			width: 50px;
+			height: 50px;
+			background-color: #EEEEEE;
+			text-align: center;
+			font-size: 2em;
+		}
+	</style>
+</head>
+<body>
+	<!--
+		1. Создать функцию, генерирующую шахматную доску. При этом можно использовать любые html-теги по своему желанию.
+		Доска должна быть разлинована соответствующим образом, т.е. чередовать черные и белые ячейки.
+		Строки должны нумероваться числами от 1 до 8, столбцы – латинскими буквами A, B, C, D, E, F, G, H.
+	-->
+
+	<!-- 
+		2. Заполнить созданную таблицу фигурами, фигуры должны выглядеть как картинки,
+		либо можно использовать символы (существуют символы шахматных фигур) 
+		причем все фигуры должны стоять на своих местах и быть соответственно черными и белыми.
+	 -->
+
+	<table id="game"></table>
+	<script src="app.js"></script>
+</body>
+</html>

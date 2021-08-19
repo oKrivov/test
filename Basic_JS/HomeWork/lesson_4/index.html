@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		'use strict'
+/*
+
+		function NumberConvert(number) {
+
+			if(!Number.isInteger(number) || number < 0 || number > 999) {
+				console.log('Значение аргумента должно быть целым числом в диапазоне [0 ... 999]');
+				return { }
+			}
+			
+			let obj = {}
+			obj.firstDigit = parseInt(number % 10);
+			obj.secondDigit = parseInt(number / 10 % 10);
+			obj.thirdDigit = parseInt(number / 100);
+	
+			return obj
+		}
+		console.log(NumberConvert(102));
+
+*/
+
+
+
+const questions = [
+		{
+			text: 'Загадка один',
+			variants: {
+				a: 'Правильный ответ',
+				b: 'Неверный ответ',
+				c: 'Совсем неверный ответ',
+				d: 'Очень, очень плохой ответ',
+			},
+			correctAnswerindex: 'a',
+		},
+		{
+			text: 'Загадка два',
+			variants: {
+				a: 'Неверный ответ',
+				b: 'Правильный ответ',
+				c: 'Совсем неверный ответ',
+				d: 'Очень, очень плохой ответ',
+			},
+			correctAnswerindex: 'b',
+		},
+		{
+			text: 'Загадка три',
+			variants: {
+				a: 'Совсем неверный ответ',
+				b: 'Неверный ответ',
+				c: 'Правильный ответ',
+				d: 'Очень, очень плохой ответ',
+			},
+			correctAnswerindex: 'c',
+		},
+		{
+			text: 'Загадка четыре',
+			variants: {
+				a: 'Очень, очень плохой ответ',
+				b: 'Неверный ответ',
+				c: 'Совсем неверный ответ',
+				d: 'Правильный ответ',
+			},
+			correctAnswerindex: 'd',
+		},
+		{
+			text: 'Загадка пять',
+			variants: {
+				a: 'Правильный ответ',
+				b: 'Неверный ответ',
+				c: 'Совсем неверный ответ',
+				d: 'Очень, очень плохой ответ',
+			},
+			correctAnswerindex: 'a',
+		}
+];
+   
+
+const game = {
+	questions: questions,
+	scoreCount: 0,
+	questionIndex: 0,
+
+	init () {
+		this.scoreCount = 0;
+		this.questionIndex = 0;
+	},
+
+	run () {
+		this.init();
+		alert('Здравствуйте, добро пожаловать на игру "Кто хочет стать миллеонером".');
+
+		while(true) {
+			const answer = this.getAnswer(); 
+
+			if (this.userWantExit(answer)) {
+				alert('До свидания!');
+				break;
+			}
+
+			if(this.isAnswerCorrect(answer)) {
+				alert(`Это правельный ответ!`)
+				this.scoreCount++;
+			} else {
+				alert(`К сожалению, это ошибка.`)
+			}
+
+			this.questionIndex++;
+
+			if (this.gameOver()) {
+				alert(`Ваш счет: ${this.scoreCount}.`);
+				
+				if (!confirm('Хотите сыграть еше одну игру?')) {
+					break
+				}
+				
+				this.init();
+			}
+		}
+	},
+
+	getAnswer() {
+		while(true){
+			let answer = prompt(this.getCurrentQuestionString());
+
+			if(answer === null) {
+				alert(`Если хотите выйти из игры, наберите "exit".`)
+				continue;
+			}
+
+			answer = answer.trim().toLowerCase();
+
+			if (!this.validateAnswer(answer)) {
+				alert(`Необходимо выбрать один из предложенных вариантов ответа`);
+				continue;
+			}
+
+			return answer;
+		}
+	},
+
+	getCurrentQuestionString() {
+		const question = this.questions[this.questionIndex];
+
+		let questionString = `Вопрос: ${question.text} \n\nВарианты ответов:\n`;
+		for(const key in question.variants) {
+			if(question.variants.hasOwnProperty(key)) {
+				questionString += `${key} - ${question.variants[key]}\n`
+			}
+		}
+		return questionString;
+	},
+
+	validateAnswer(userAnswer) {
+		return ['exit', 'a', 'b', 'c', 'd'].indexOf(userAnswer) !== -1;
+	},
+ 
+	userWantExit(userAnswer) {
+		return userAnswer === 'exit';
+	},
+
+	isAnswerCorrect(userAnswer) {
+		return this.questions[this.questionIndex].correctAnswerindex === userAnswer;
+	},
+
+	gameOver() {
+		return this.questionIndex > 4;
+	},
+
+};
+
+game.run();
+
+
+
+	</script>
+</body>
+</html>
