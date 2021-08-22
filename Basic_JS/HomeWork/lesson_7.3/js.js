@@ -71,6 +71,10 @@ const snake = {
 	incrementBody() {
 		this.body.push(Object.assign({}, this.body[this.body.length - 1]));
 	},
+
+	getHeadPoint() {
+		return Object.assign({}, this.body[0]);
+	}
 };
 
 const food = {
@@ -204,7 +208,7 @@ const renderer = {
 	 * @param {{x: int, y: int}[]} snakePointsArray 
 	 * @param foodPoint 
 	 */
-	render(snakePointsArray, foodPoint) {
+	render(snakePointsArray, wallsPointsArray, foodPoint) {
 		for (const key of Object.getOwnPropertyNames(this.cells)) {
 			this.cells[key].className = 'cell';
 		}
@@ -212,6 +216,10 @@ const renderer = {
 		snakePointsArray.forEach((point, idx) => {
 			this.cells[`x${point.x}_y${point.y}`].classList.add(idx === 0 ? 'snakeHead' : 'snakeBody');
 		});
+
+		wallsPointsArray.forEach(point => {
+			this.cells[`x${point.x}_y${point.y}`].classList.add('wall');
+		}); 
 
 		this.cells[`x${foodPoint.x}_y${foodPoint.y}`].classList.add('food');
 	},
@@ -254,6 +262,22 @@ const status = {
 	}
 };
 
+const walls = {
+	points: [],
+
+	init(wallsPoints) {
+		this.points = wallsPoints;
+	},
+
+	isWallPoint(point) {
+		return this.points.some(wallPoint => wallPoint.x === point.x && wallPoint.y === point.y);
+	},
+	changeRandomWallPosition(point) {
+		const wallIndex = Math.floor(Math.random() * this.points.length);
+		this.points[wallIndex] = point;
+	},
+};
+
 /**
  * Объект игры.
  * @property {settings} settings Настройка игры.
@@ -267,11 +291,13 @@ const status = {
 const game = {
 	settings,
 	renderer, 
+	walls,
 	status,
 	snake,
 	food,
 	score,
 	tickInterval: null,
+	changeWallTimeout: null,
 
 	/**
 	 * Инициализация игры.
@@ -355,24 +381,70 @@ const game = {
 		this.snake.init(this.getStartSnakePoint(), 'up', this.settings.colsCount - 1, this.settings.rowsCount - 1);
 		this.score.drop();
 		this.food.setCoordinates(this.getRandomCoordinates());
+		this.walls.init(this.getRandomCoordinates(5, this.getDisabledWallCells()));
 		this.render();
 	},
+
+	getDisabledWallCells() {
+		const snakeHeadPoint = this.snake.getHeadPoint()
+
+		const busyCells = [];
+		
+		for (let x = snakeHeadPoint.x - 2; x <= snakeHeadPoint.x + 2; x++) {
+			for(let y = snakeHeadPoint.y - 2; y <= snakeHeadPoint.y +2; y++) {
+				let xCoordinate = x, yCoordinate = y;
+
+				if (xCoordinate < 0) {
+					xCoordinate = this.settings.colsCount + xCoordinate;
+				} else if (xCoordinate >= this.settings.colsCount) {
+					xCoordinate = xCoordinate - this.settings.colsCount;
+				}
+
+				if (yCoordinate < 0) {
+					yCoordinate = this.settings.rowsCount + yCoordinate;
+				} else if (yCoordinate >= this.settings.rowsCount) {
+					yCoordinate = yCoordinate - this.settings.rowsCount;
+				}
+
+				busyCells.push({x: xCoordinate, y: yCoordinate});
+			}
+		}
+		return busyCells;
+	},
+	
 
 	play() {
 		this.status.setPlaying();
 		this.tickInterval = setInterval(()=> this.tickHandler(), 1000 / this.settings.speed);
+		this.changeWallTimeout = setTimeout(
+			() => this.changeRandomWallPosition(), 
+			Math.floor(Math.random() * 10000) + 5000
+			);
 		this.changePlayButton('Стоп');
+	},
+
+	changeRandomWallPosition() {
+		this.changeWallTimeout = setTimeout(
+			() => this.changeRandomWallPosition(), 
+			Math.floor(Math.random() * 10000) + 5000
+			);
+
+			const newWallPosition = this.getRandomCoordinates(1, this.getDisabledWallCells());
+			this.walls.changeRandomWallPosition(newWallPosition);
+			this.render();
 	},
 
 	stop() {
 		this.status.setStopped();
 		clearInterval(this.tickInterval);
+		clearTimeout(this.changeWallTimeout);
 		this.changePlayButton('Старт');
 	},
 	
 	finish() {
 		this.status.setFinished();
 		clearInterval(this.tickInterval);
+		clearTimeout(this.changeWallTimeout);
 		this.changePlayButton('Игра закончена', true);
 	},
 
@@ -406,7 +478,7 @@ const game = {
 	canSnakeMakeStep() {
 		const nextHeadPoint = this.snake.getNextStepHeadPoint();
 
-		return !this.snake.isBodyPiont(nextHeadPoint);
+		return !this.snake.isBodyPiont(nextHeadPoint) && !this.walls.isWallPoint(nextHeadPoint);
 	},
 
 	/**
@@ -421,7 +493,7 @@ const game = {
 	},
 
 	render() {
-		this.renderer.render(this.snake.body, this.food.getCoordinates());
+		this.renderer.render(this.snake.body, this.walls.points, this.food.getCoordinates());
 	},
 
 	/**
@@ -439,21 +511,26 @@ const game = {
 	 * Возвращает случайнкю не занятую точку на карте.
 	 * @returns {{x: int, y: int}} Точка.
 	 */
-	getRandomCoordinates() {
-		const exclude = [this.food.getCoordinates(), ...this.snake.body];
+	getRandomCoordinates(count = 1, exclude = []) {
+		exclude.push(this.food.getCoordinates(), ...this.snake.body, ...this.walls.points);
 
-		while (true) {
+		const randomPoints = [];
+
+		while (randomPoints .length < count) {
 			const rndPoint = {
 				x: Math.floor(Math.random() * this.settings.colsCount),
 				y: Math.floor(Math.random() * this.settings.rowsCount)
 			}
 
 			if(!exclude.some(exPoint => rndPoint.x === exPoint.x && rndPoint.y === exPoint.y)) {
-				return rndPoint;
+				randomPoints.push(rndPoint);
+				exclude.push(rndPoint);
 			}
 		}
+
+		return count === 1 ? randomPoints[0] : randomPoints;
 	},
 
 };
 
-window.onload = () => game.init({speed: 5, winLength: 5});
+window.onload = () => game.init({speed: 5, winLength: 15});

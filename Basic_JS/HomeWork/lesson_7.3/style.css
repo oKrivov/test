@@ -53,3 +53,7 @@ td.cell{
 	font-size: 2em;
 	color: #d40019;
 }
+
+.wall{
+	background: #7c006e;
+}
