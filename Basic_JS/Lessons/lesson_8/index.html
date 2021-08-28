@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Занятие 8</title>
+</head>
+<body>
+	<script>
+		'use strict'
+
+/*
+const user = {
+	name: 'Pavel',
+
+	sayNameSimple() {
+		setTimeout(function() {
+			console.log(this);
+		}, 1000)
+	},
+	sayNameArrow() {
+		setTimeout(() => {
+			console.log(this);
+		},1000);
+	}
+};
+
+user.sayNameSimple(); 
+user.sayNameArrow();  
+*/
+
+/*
+function a(a, b, c) {
+	console.log(a, b, c);
+};
+const b = [5, 15, 6,]
+a(...b)
+*/
+
+/*
+function myFunc() {
+	let name = 'Pavel';
+
+	function sayName() {
+		console.log(name);
+	};
+	return sayName;
+};
+
+const mySayName = myFunc();
+mySayName();
+*/
+
+/*
+function game() {
+	let privateVariable;
+	function privateFunc() {
+		console.log(`Функция privateFunc запушена`);
+		console.log(`Переменная privateVariable = ${privateVariable}`);
+	};
+	return {
+		init(val) {
+			privateVariable = val;
+			privateFunc();
+		}
+	};
+}
+
+const myGame = game();
+myGame.init(5);
+*/
+
+/*
+// function add(a, b) {
+// 	return a + b;
+// };
+// console.log(add(2, 3));
+// console.log(add(2, 10));
+// console.log(add(2, 5));
+
+function add(a) {
+	return function (b) {
+		return a + b;
+	}
+};
+
+const addTwo = add(2)
+
+console.log(addTwo(3));
+console.log(addTwo(10));
+console.log(addTwo(5));
+*/
+
+const user = {
+	name: 'Pavel',
+	sayName() {
+		console.log(this.name);
+	},
+};
+user.sayName(); 
+
+function sayName() {
+	console.log(this.name); 
+}
+const myFunc = sayName.bind(user);
+myFunc();
+
+const user2 = {
+	name: 'Oleg'
+}
+
+sayName.call(user);
+sayName.call(user2, 5, 123);
+sayName.apply(user);
+sayName.apply(user2, [5, 123]);
+
+
+
+	</script>
+</body>
+</html>
