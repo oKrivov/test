@@ -11,16 +11,15 @@ h3{
 	font-size: 16px;
 }
 input{
-	min-height: 100%;
-	margin: 0;
+	margin: 5px;
 	padding: 0 5px;
 	background-color: rgb(226, 226, 226);
-	height: 30px;
 	border: 1px solid #000;
+	line-height: 28px;
 }
 button{
-	margin: 0;
-	margin-left: 5px;
+	margin: 5px;
+	/* margin-left: 5px; */
 	padding: 0 10px;
 	height: 30px;
 	background-color: rgb(226, 226, 226);
@@ -38,6 +37,7 @@ padding: 20px;
 }
 .input-container {
 	display: flex;
+	align-items: center;
 }
 .section {
 	border-bottom: 1px solid #aaa;
@@ -50,10 +50,7 @@ padding: 20px;
 	padding: 0;
 }
 label{
-	line-height: 0;
 	margin: 0;
 	margin-left: 5px;
-	display: flex;
-	align-items: center;
 	padding: 0;
 }

@@ -11,19 +11,15 @@
 		<h2>Gid - получение данных</h2>
 		<section class="section">
 			<h3>1. INPUT[TYPE='TEXT']</h3>
-			<div class="input-container">
 				<input type="text" class="i-1">
 				<button class="b-1">from input</button>
-			</div>
 			<div class="out-block out-1"></div>
 		</section>
 
 		<section class="section">
 			<h3>2. INPUT[TYPE='NUMBER']</h3>
-			<div class="input-container">
 				<input type="number" class="i-2">
 				<button class="b-2">from input</button>
-			</div>
 			<div class="out-block out-2"></div>
 		</section>
 
@@ -38,33 +34,112 @@
 
 		<section class="section">
 			<h3>4. INPUT[TYPE='DATE']</h3>
-			<div class="input-container">
-				<input type="data" class="i-4">
+				<input type="date" class="i-4">
 				<button class="b-4">from input</button>
-			</div>
 			<div class="out-block out-4"></div>
 		</section>
 
 		<section class="section">
 			<h3>5. INPUT[TYPE='RANGE']</h3>
-			<div class="input-container">
 				<input type="range" class="i-5">
 				<button class="b-5">from input</button>
-			</div>
 			<div class="out-block out-5"></div>
 		</section>
 
 		<section class="section">
 			<h3>6. INPUT[TYPE='CHECKBOX']</h3>
-			<div class="input-container">
 				<input type="checkbox" class="i-6" id="i6" value="999">
 				<label for="i6">Checkbox</label>
 				<button class="b-6">from input</button>
-			</div>
 			<div class="out-block out-6"></div>
 		</section>
 
+		<section class="section">
+			<h3>7. INPUT[TYPE='radio']</h3>
+			<div>
+				<input type="radio" class="i-7" id="i71" checked name="rb1" value="222">
+				<label for="i71">Option 1</label>
+			</div>
+			<div>
+				<input type="radio" class="i-7" id="i72" name="rb1" value="333">
+				<label for="i72">Option 2</label>
+			</div>
+			<div>
+				<input type="radio" class="i-7" id="i73" name="rb1" value="444">
+				<label for="i73">Option 3</label>
+			</div>
 
+			<button class="b-7">from input</button>
+			<div class="out-block out-7"></div>
+		</section>
+
+		<section class="section">
+			<h3>8. INPUT[TYPE='password']</h3>
+				<input type="password" class="i-8">
+				<button class="b-8">from input</button>
+			<div class="out-block out-8"></div>
+		</section>
+
+		<section class="section">
+			<h3>9. INPUT[TYPE='email']</h3>
+				<input type="email" class="i-9">
+				<button class="b-9">from input</button>
+			<div class="out-block out-9"></div>
+		</section>
+
+		<section class="section">
+			<h3>10. INPUT[TYPE='section']</h3>
+			<select name="" id="" class="s-10">
+				<option value="hello">Text 1</option>
+				<option value="foo">Text 2</option>
+				<option value="winamp">Text 3</option>
+				<option value="foobar">Text 4</option>
+			</select>
+			<button class="b-10">from input</button>
+			<div class="out-block out-10"></div>
+		</section>
+
+		<section class="section">
+			<h3>11. INPUT[TYPE='textarea']</h3>
+			<textarea type="textarea" class="t-11"></textarea>
+			<button class="b-11">from input</button>
+			<div class="out-block out-11"></div>
+		</section>
+
+		<form action="">
+			<h3>11. Form</h3>
+			<div>
+				<input type="text" name="myInput">
+			</div>
+			<div class="">
+				<input type="checkbox" id="form-ch-1" value="555"	name="myCheckbox" class="">
+				<label for="form-ch-1">checkbox</label>
+			</div>
+			<div class="">
+				<div class="">
+					<input type="radio" class="" id="form-radio-1" value="777" name="myRadio">
+					<label for="form-radio-1">radio 1</label>
+				</div>
+				<div class="">
+					<input type="radio" class="" id="form-radio-2" value="888" name="myRadio">
+					<label for="form-radio-2">radio 2</label>
+				</div>
+				<div class="">
+					<input type="radio" class="" id="form-radio-3" value="999" name="myRadio">
+					<label for="form-radio-3">radio 3</label>
+				</div>
+				<div class="">
+					<select name="mySelect" id="" class="s-10">
+						<option value="hello">Text 1</option>
+						<option value="foo">Text 2</option>
+						<option value="winamp">Text 3</option>
+						<option value="foobar">Text 4</option>
+					</select>
+				</div>
+				<button type="submit">Submit</button>
+			</div>
+		</form>
+		
 	</div>
 
 	<script src="js.js"></script>

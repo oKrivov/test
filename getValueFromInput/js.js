@@ -48,3 +48,44 @@ document.querySelector('.b-6').addEventListener('click', () => {
 	document.querySelector('.i-6').checked = false;
 	}
 });
+
+document.querySelector('.b-7').addEventListener('click', () => {
+	// let data = document.querySelector('.i-7').value; !!!
+	let  radio = document.querySelectorAll('.i-7');
+	radio.forEach(i => {
+		if(i.checked){
+			document.querySelector('.out-7').innerHTML = i.value;
+		}
+	});
+});
+
+document.querySelector('.b-8').addEventListener('click', () => {
+	let data = document.querySelector('.i-8').value;
+	document.querySelector('.out-8').innerHTML = data;
+});
+
+document.querySelector('.b-9').addEventListener('click', () => {
+	let data = document.querySelector('.i-9').value;
+	document.querySelector('.out-9').innerHTML = data;
+});
+
+document.querySelector('.b-10').addEventListener('click', () => {
+	let section = document.querySelector('.s-10').value;
+	document.querySelector('.out-10').innerHTML = section;
+
+	// document.querySelector('.s-10').value = 'winamp';
+});
+
+document.querySelector('.b-11').addEventListener('click', () => {
+	let section = document.querySelector('.t-11').value;
+	document.querySelector('.out-11').innerHTML = section;
+});
+
+document.querySelector('form').addEventListener('submit', (event) => {
+	event.preventDefault();
+
+	const form = document.querySelector('form');
+	console.dir(form.elements.mySelect.value);
+
+	form.reset(); //очистить форму
+});
