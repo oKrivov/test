@@ -133,11 +133,6 @@ button {
 		align-items: center;
 		padding: 50px;
 	}
-	.section-container {
-		/* display: flex;
-		flex-wrap: nowrap; */
-		/* min-height: 100%; */
-	}
 	.sectoin-accordion {
 		display: flex;
 		flex-wrap: nowrap;

@@ -4,6 +4,10 @@ const questionsList = [
 		answer: 'You can invite up to 2 additional users on the Free plan. There is no limit on team members for the Premium plan.'
 	},
 	{
+		question: 'How many team members can I invite?',
+		answer: 'You can invite up to 2 additional users on the Free plan. There is no limit on team members for the Premium plan.'
+	},
+	{
 		question: 'What is the maximum file upload size?',
 		answer: 'No more than 2GB. All files in your account must fit your allotted storage space.'
 	},
@@ -20,15 +24,57 @@ const questionsList = [
 		answer: 'Chat and email support is available 24/7. Phone lines are open during normal business hours.'
 	},
 	{
-		question: 'Do you provide additional support?',
+		question: '   Do you provide additional support?',
 		answer: 'Chat and email support is available 24/7. Phone lines are open during normal business hours.'
 	},
+	
 ];
+
+/*
+
+const uniq = Array.from(questionsList.reduce((map, obj) => map.set(obj.question, obj), new Map()).values())
+
+*/
+
+const newQuestionsList = [... new Map(questionsList.map((item) => [item.question.trim(), item])).values()];
+
+
+
+
+let test_uniqobjArray_map = questionsList.map((item) => [item.question.trim(), item]);
+
+let test_uniqobjArray_NewMap = new Map(test_uniqobjArray_map)
+
+let test_uniqobjArray_NewMap_keys = test_uniqobjArray_NewMap.keys();
+
+let test_uniqobjArray_NewMap_values = test_uniqobjArray_NewMap.values();
+
+let test_uniqobjArray_NewMap_values_AsArray = [...test_uniqobjArray_NewMap_values];
+console.log(test_uniqobjArray_NewMap_values_AsArray);
+
+
+
+
+
+/*
+
+
+const newQuestionsList = questionsList.filter(function (item, index, self) {
+	return index === self.findIndex(function(t){
+
+		return t.question.trim()  === item.question.trim() 
+		// && t.answer === item.answer
+	})
+})
+
+*/
 
 const sectionCenter = document.querySelector('.section-text');
 
 window.addEventListener('DOMContentLoaded', function () {
-	questionsList.forEach(function (item) {
+
+
+	newQuestionsList.forEach(function (item) {
 		addElement(item.question, item.answer)
 	});
 
