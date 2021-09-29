@@ -1,0 +1,110 @@
+@charset 'UTF-8';
+
+/*  Обнуление */
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+body {
+	color: hsl(212, 23%, 69%);
+	font-family: "Manrope", sans-serif;
+	font-size: 13px;
+	font-weight: 500;
+	background-color: rgba(163, 161, 161, 0.815);
+}
+
+@media (min-width: 767px) {
+	.wrapper {
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.container {
+		width: 1440px;
+		height: 800px;
+		background: hsl(210, 46%, 95%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.component {
+		width: 730px;
+		min-height: 280px;
+		background-color: #fff;
+		display: flex;
+		overflow: hidden;
+		border-radius: 10px;
+	}
+	.component-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 0 0 ;
+	}
+	.component-image {
+		flex: 0 0 285px;
+		width: 285px;
+	}
+	.component-content {
+		background-color: #fff;
+		flex: 1 0 50%;
+		padding: 30px 40px 30px 40px;
+		/* width: 100%; */
+	}
+	.component-title {
+		font-size: 17px;
+		color: hsl(217, 19%, 35%);
+		margin-bottom: 20px;
+	}
+	.component-text {
+		color: hsl(212, 23%, 69%);
+		line-height: 20px;
+		margin-bottom: 20px;
+	}
+	.component-footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.component-author {
+		display: flex;
+	}
+	.component-author-image {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+	.component-author-image img {
+		width: 100%;
+	}
+	.component-author-info {
+		line-height: 20px;
+		margin-left: 20px;
+	}
+	.component-author-name {
+		color: hsl(217, 19%, 35%);
+		font-weight: 700;
+	}
+	.component-author-date {
+	}
+	.component-share {
+		width: 35px;
+		height: 35px;
+		background: hsl(210, 46%, 95%);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.component-share svg {
+		fill: green;
+	}
+	path{ fill:inherit; stroke:inherit; }
+}

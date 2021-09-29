@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 	newQuestionsList.forEach(function (item) {
-		addElement(item.question, item.answer)
+		addElement(item.question, item.answer);
 	});
 
 	listenerBtns()
