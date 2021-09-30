@@ -15,10 +15,142 @@ body {
 	font-family: "Manrope", sans-serif;
 	font-size: 13px;
 	font-weight: 500;
-	background-color: rgba(163, 161, 161, 0.815);
+}
+.container {
+	width: 100%;
+	min-height: 100vh;
+	margin: 0 auto;
+	background: hsl(210, 46%, 95%);
+	padding: 75px 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.component {
+	width: 100%;
+	background: #fff;
+	border-radius: 10px;
+	
+}
+.component-image img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	object-position: 0 0 ;
+	border-radius: 10px 10px 0 0;
+}
+.component-image {
+	width: 100%;
+	margin-bottom: 40px;
+}
+.component-content {
+	/* padding: 40px 30px 20px 30px; */
+}
+.component-title {
+	font-size: 15px;
+	color: hsl(217, 19%, 35%);
+	margin: 0 30px 20px 30px;
+}
+.component-text{
+	margin: 0 30px 25px 30px;
+}
+.component-author-image {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.component-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 30px;
+	position: relative;
+	padding: 0 30px 20px;
+}
+.component-author {
+	display: flex;
+}
+.component-author-image img {
+	width: 100%;
+}
+.component-author-info {
+	line-height: 20px;
+	margin-left: 20px;
+}
+.component-author-name {
+	color: hsl(217, 19%, 35%);
+	font-weight: 700;
+}
+.component-share {
+	width: 35px;
+	height: 35px;
+	background: hsl(210, 46%, 95%);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+.component-share:hover {
+	box-shadow: 0px 0px 5px  hsl(217, 19%, 35%);
+}
+
+
+.component-share-active{
+	width: 100%;
+	background: hsl(217, 19%, 35%);
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding: 17px 15px;
+	border-radius: 0  0 10px 10px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	/* box-shadow: 0px 10px 10px hsla(218, 19%, 25%, 0.116); */
+	display: none;
+}
+.active-link{
+	display: flex;
+}
+.component-share-active::before{
+	display: none;
+}
+.component-share-active p{
+	letter-spacing: 5px;
+
+}
+.social-link {
+	width: 20px;
+	height: 20px;
+}
+.social-link:hover  img{
+	transition: 0.5s ease;
+	transform: rotate(360deg);
+
+}
+.component-share-mobile{
+	width: 32px;
+	height: 32px;
+	display: flex;
+	padding: 7px;
+	background: hsl(214, 17%, 51%);
+	border-radius: 50%;
+	display: flex;
 }
 
 @media (min-width: 767px) {
+	/* body {
+		color: hsl(212, 23%, 69%);
+		font-family: "Manrope", sans-serif;
+		font-size: 13px;
+		font-weight: 500;
+		background-color: rgba(163, 161, 161, 0.815);
+		transition: 0.5s ease;
+	} */
+	
 	.wrapper {
 		height: 100vh;
 		display: flex;
@@ -27,7 +159,7 @@ body {
 	}
 	.container {
 		width: 1440px;
-		height: 800px;
+		min-height: 800px;
 		background: hsl(210, 46%, 95%);
 		display: flex;
 		align-items: center;
@@ -36,41 +168,44 @@ body {
 	.component {
 		width: 730px;
 		min-height: 280px;
-		background-color: #fff;
+		background: #fff;
 		display: flex;
-		overflow: hidden;
-		border-radius: 10px;
+		border-radius: 20px;
 	}
 	.component-image img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		object-position: 0 0 ;
+		border-radius: 20px 0  0 20px;
 	}
 	.component-image {
 		flex: 0 0 285px;
 		width: 285px;
+		margin: 0;
 	}
 	.component-content {
 		background-color: #fff;
 		flex: 1 0 50%;
-		padding: 30px 40px 30px 40px;
-		/* width: 100%; */
+		padding: 30px 0px 30px 40px;
+		margin-right: 40px;
+
 	}
 	.component-title {
 		font-size: 17px;
 		color: hsl(217, 19%, 35%);
-		margin-bottom: 20px;
+		margin: 0 0 20px 0;
 	}
 	.component-text {
 		color: hsl(212, 23%, 69%);
 		line-height: 20px;
-		margin-bottom: 20px;
+		margin: 0 0 20px 0;
 	}
 	.component-footer {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		padding: 0;
 	}
 	.component-author {
 		display: flex;
@@ -102,9 +237,58 @@ body {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		position: relative;
+		cursor: pointer;
 	}
-	.component-share svg {
-		fill: green;
+	.component-share:hover {
+		box-shadow: 0px 0px 5px  hsl(217, 19%, 35%);
 	}
-	path{ fill:inherit; stroke:inherit; }
+
+
+	.component-share-active{
+		width: 250px;
+		background: hsl(217, 19%, 35%);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 17px 30px;
+		border-radius: 10px;
+		position: absolute;
+		left: 50%;
+		top: -60px;
+		transform: translate(-50%, -50%);
+		box-shadow: 0px 10px 10px hsla(218, 19%, 25%, 0.116);
+		display: none;
+	
+	}
+	.active-link{
+		display: flex;
+	}
+	.component-share-active::before{
+		content: "";
+		background: hsl(217, 19%, 35%);
+		width: 20px;
+		height: 20px;
+		transform: rotate(45deg);
+		position: absolute;
+		left: 50%;
+		bottom: -10px;
+		transform: translate(-50%,0) rotate(45deg);
+		display: block;
+	}
+	.component-share-active p{
+		letter-spacing: 5px;
+
+	}
+	.social-link {
+		width: 20px;
+		height: 20px;
+	}
+	.social-link:hover  img{
+		transition: 0.5s ease;
+		transform: rotate(360deg);
+	}
+	.component-share-mobile{
+		display: none;
+	}
 }
