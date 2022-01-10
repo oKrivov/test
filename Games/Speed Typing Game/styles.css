@@ -1,0 +1,57 @@
+* {
+	box-sizing: border-box;
+}
+
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh; 
+	margin: 0;
+	background-color: #1e0555;
+	/* flex-direction: column; */
+}
+body, .quote-input {
+	font-family: 'Gill Sans', 'Gill Sans MT', sans-serif;
+}
+.timer {
+	position: absolute;
+	color: #f0db4f;
+	top: 2rem;
+	font-size: 3rem;
+	font-weight: bold;
+}
+.container {
+	background-color: #f0db4f;
+	padding: 1rem;
+	border-radius: .5rem;
+	width: 700px;
+	max-width: 90%;
+}
+.quote-dysplay {
+	margin-bottom: 1rem;
+	margin-left: calc(1rem + 2px);
+	margin-right: calc(1rem + 2px);
+}
+.quote-input {
+	background-color: transparent;
+	border: 2px solid #A1922E;
+	outline: none;
+	width: 100%;
+	height: 8rem;
+	margin: auto;
+	resize: none;
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	border-radius: .5rem;
+}
+.quote-input:focus{
+	border-color: black;
+}
+.correct{
+	color: green;
+}
+.incorrect{
+	color: red;
+	text-decoration: underline;
+}
