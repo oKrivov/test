@@ -1,23 +1,34 @@
-function conversionOfNumberSystem (value, base) {
-	value = prompt().trim();
-	base = prompt().trim();
-	if(isNaN(value) || isNaN(base) || base < 2 || base > 32 || value === ''){
-		return console.log('Некорректный ввод!');
-	}
+const weakDays = [
+	'Воскресенье',
+	'Понедельник',
+	'Вторник',
+	'Среда',
+	'Чеверг',
+	'Пятница',
+	'Суббота'
+]
+const months = [
+	'Января',
+	'Февраля',
+	'Марта',
+	'Апреля',
+	'Мая',
+	'Июня',
+	'Июля',
+	'Августа',
+	'Сентября',
+	'Октября',
+	'Ноябрь',
+	'Декабря'
+]
+function getDayInfo(d) {	
+	let [day, month, year] = d.split('.');
+	month--;
+	const date = new Date(year, month, day);
+	const conutWeakOfMonth =  Math.ceil(date.getDate() / 7);
 
-	return console.log((+value).toString(base));
+	return `${weakDays[date.getDay()]}, ${conutWeakOfMonth} неделя ${months[date.getMonth()]} ${date.getFullYear()} года`
+
 }
-// conversionOfNumberSystem();
 
-function sumAndQuotientOfTwoNumbers(value1, value2) {
-	value1 = +prompt().trim();
-	value2 = +prompt().trim();
-	if(value1 === '' || value2 === '' || value2 === 0 ||isNaN(value1) || isNaN(value2)){
-		return console.log('Некорректный ввод!');
-	} 
-	
-	return console.log(`Ответ: ${value1 + value2}, ${(value1 / value2)}`);
-}
-
-// sumAndQuotientOfTwoNumbers();
-
+console.log(getDayInfo("01.01.2022"));
